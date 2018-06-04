@@ -61,7 +61,7 @@ namespace ConsoleApp3
         private static int CoinFlip()
         {
             Random random = new Random();
-            return random.Next(0, 1);
+            return random.Next(0, 2);
         }
 
         private static void Fight(Character playerOne, Character playerTwo, bool attackerTurn)

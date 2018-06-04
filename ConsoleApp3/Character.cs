@@ -11,6 +11,24 @@ namespace ConsoleApp3
         protected int health;
         protected int attack;
         protected int mana;
+        private ICharacterState state;
+
+        public ICharacterState State
+        {
+            get
+            {
+                return this.state;
+            }
+            set
+            {
+                this.state = value;
+            }
+        }
+        public void Update()
+        {
+            this.State.Update(this);
+        }
+
 
         public Character(int health, int attack, int mana)
         {

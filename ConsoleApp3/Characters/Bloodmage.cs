@@ -39,9 +39,9 @@ namespace ConsoleApp3.Characters
         {
             if (BloodRain())
             {
-                this.health -= (this.attack + this.magicPower) * 5;
                 magicOfBlood = this.magicPower * VampiricTouch() * 2;
                 Console.WriteLine("Bloodmage use Bloodrain!!!");
+                Console.ReadKey();
                 Console.WriteLine($"Character: {this.GetType()}, attacked character: {character.GetType()} for {this.magicPower + magicOfBlood} damage");
                 character.TakeDamage(this.magicPower + magicOfBlood);
                 Console.WriteLine("Bloodmage health decreased for: " + (this.attack + this.magicPower) * 5);
@@ -94,7 +94,7 @@ namespace ConsoleApp3.Characters
         {
             Random random = new Random();
             int number = random.Next(0, 100);
-            if (number == this.magicPower)
+            if (number <= this.magicPower)
                 return true;
             else
                 return false;

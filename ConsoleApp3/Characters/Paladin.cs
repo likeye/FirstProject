@@ -31,7 +31,7 @@ namespace ConsoleApp3.Characters
         }
         public override void TakeDamage(int attack)
         {
-            base.TakeDamage(attack - (this.defence/2));
+            base.TakeDamage(attack/(this.defence/20));
         }
         public override void Attack(Character character)
         {

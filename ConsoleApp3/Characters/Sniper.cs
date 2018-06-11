@@ -38,7 +38,7 @@ namespace ConsoleApp3.Characters
             if (EyeOfHunter())
             {
                 Console.WriteLine("Eye of hunter activated!");
-                dexterityBoost = this.dexterity / 2;
+                dexterityBoost = (this.dexterity / 2) + 10;
                 this.dexterity += dexterityBoost;
                 if (Headshot())
                 {

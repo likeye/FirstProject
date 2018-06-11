@@ -46,6 +46,7 @@ namespace ConsoleApp3.Characters
 
             if (Assasinerino())
             {
+                Console.WriteLine("Assassin killed you deadly ~");
                 Console.WriteLine($"Character: {this.GetType()}, attacked character: {character.GetType()} for {character.GetHealth()} damage");
                 character.TakeDamage(character.GetHealth());
             }

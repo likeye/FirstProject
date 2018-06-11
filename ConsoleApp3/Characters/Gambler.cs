@@ -137,7 +137,7 @@ namespace ConsoleApp3.Characters
             }
             
         }
-        private void SmokeAndMirrors() // zmiana wizerunkuuu
+        private void SmokeAndMirrors() // zmiana wizerunkuuu na 2 tury 
         {
 
         }

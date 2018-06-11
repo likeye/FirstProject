@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp3.CharacterStates
 {
-    class SleepCharacterState
+    public class SleepCharacterState : CharacterStateBase
     {
+        public override void Update(Character character)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using ConsoleApp3.GameInterface;
 using ConsoleApp3.Characters;
+using System.Collections.Generic;
 
 namespace ConsoleApp3
 {
@@ -18,31 +20,61 @@ namespace ConsoleApp3
             //warrior.PrintMana();
 
             Character warrior = new Warrior(500, 70, 0, 65);
-            Character rouge = new Rouge(300, 70, 0, 65);
+            Character rouge = new Rouge(400, 70, 0, 65);
+            Character mage = new Mage(300, 30, 3000, 10);
+            Character ranger = new Ranger(400, 60, 300, 30);
+            
+            Paladin paladin = new Paladin(700, 70, 100, 30, 40);
+            Berserker berserker = new Berserker(700, 70, 0, 45);
+            Assassin assassin = new Assassin(600, 80, 0, 89);
+            Gambler gambler = new Gambler(600, 50, 0, 40, 2);
+            Archmage archmage = new Archmage(500, 30, 5000, 50);
+            Bloodmage bloodmage = new Bloodmage(500, 30, 2000, 50);
+            Sniper sniper = new Sniper(600, 80, 100, 60);
+            BeastMaster beastMaster = new BeastMaster(700, 60, 500, 40); // wip
 
-            Paladin paladin = new Paladin(500, 70, 100, 30, 40);
-            Berserker berserker = new Berserker(600, 70, 0, 45);
-            Assassin assassin = new Assassin(600, 80, 0, 99);
-            Gambler gambler = new Gambler(700, 50, 0, 40, 2);
+            
+            Fighting fighting = new Fighting();
+            List<Character> lista = new List<Character>
+            {
+                paladin,
+                berserker,
+                assassin,
+                gambler,
+                archmage,
+                bloodmage,
+                sniper,
+                beastMaster
+            };
 
-            var startingClass = CoinFlip();
+            Start start = new Start();
+            start.StartingInterface(lista);
+            Console.ReadKey();
+            
+
+            Random random = new Random();
+            int p1 = random.Next(0, 7);
+            int p2 = random.Next(0, 7);
+
+
             var playerOneTurn = false;
+            playerOneTurn = fighting.Starting(lista[p1],lista[p2]);
 
-            if (startingClass == 0)
-            {
-                playerOneTurn = true;
-                gambler.Attack(assassin);
-            }
-            else if (startingClass == 1)
-            {
-                playerOneTurn = false;
-                assassin.Attack(gambler);
-            }
+            //if (startingClass == 0)
+            //{
+            //    playerOneTurn = true;
+            //    bloodmage.Attack(sniper);
+            //}
+            //else if (startingClass == 1)
+            //{
+            //    playerOneTurn = false;
+            //    sniper.Attack(bloodmage);
+            //}
             
             
-            while (gambler.GetHealth() > 0 && assassin.GetHealth() > 0)
+            while (lista[p1].GetHealth() > 0 && lista[p2].GetHealth() > 0)
             {
-                Fight(gambler, assassin, playerOneTurn = !playerOneTurn);
+                fighting.Fight(lista[p1], lista[p2], playerOneTurn = !playerOneTurn);
             }
           //  if (berserker.GetHealth() <= 0)
           //  {
@@ -53,23 +85,13 @@ namespace ConsoleApp3
           //  }
 
 
-            Console.WriteLine("Gambler: "+gambler.GetHealth() + " " +"Assassin: "+ assassin.GetHealth());
+            
 
             Console.ReadKey();
         }
 
-        private static int CoinFlip()
-        {
-            Random random = new Random();
-            return random.Next(0, 2);
-        }
+        
 
-        private static void Fight(Character playerOne, Character playerTwo, bool attackerTurn)
-        {
-            if (attackerTurn)
-                playerOne.Attack(playerTwo);
-            else
-                playerTwo.Attack(playerOne);
-        }
+        
     }
 }

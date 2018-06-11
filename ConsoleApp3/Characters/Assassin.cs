@@ -76,5 +76,9 @@ namespace ConsoleApp3.Characters
             else
                 return false;
         }
+        private void Stealth()
+        {
+            // znika na jedna ture w nast ataku zadaje *2 obrazen 
+        }
     }
 }

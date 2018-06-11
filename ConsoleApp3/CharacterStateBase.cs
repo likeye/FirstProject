@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ConsoleApp3.CharacterStates;
+using ConsoleApp3.Characters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,5 +15,6 @@ namespace ConsoleApp3
             character.State = targetState;
         }
         public abstract void Update(Character character);
+        
     }
 }

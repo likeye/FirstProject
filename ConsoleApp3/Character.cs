@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp3.CharacterStates;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,15 @@ namespace ConsoleApp3
         protected int health;
         protected int attack;
         protected int mana;
+        //?
+        public static ArcaneRuneCharacterState arcane;
+        public static BurnCharacterState burning;
+        public static ParryCharacterState parry;
+        public static StunCharacterState stun;
+        public static SleepCharacterState sleep;
+        public static ImmortalCharacterState immortality;
+
+        //?
         private ICharacterState state;
 
         public ICharacterState State
@@ -29,6 +39,7 @@ namespace ConsoleApp3
             this.State.Update(this);
         }
 
+        //?
 
         public Character(int health, int attack, int mana)
         {
@@ -83,6 +94,10 @@ namespace ConsoleApp3
         {
             this.health -= attack;
             Console.WriteLine($"Character: {this.GetType()}, got hurt for {attack} damage. Remaining health: {this.health} \n");
+        }
+        public virtual void Healing(int heal)
+        {
+            this.health += heal;
         }
     }    
 }

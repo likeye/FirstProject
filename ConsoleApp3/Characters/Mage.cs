@@ -1,4 +1,5 @@
 ﻿using System;
+using ConsoleApp3.CharacterStates;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace ConsoleApp3.Characters
     {
         public int magicPower;
         
+        private int attackBoost;
+        
         public Mage(int health, int attack, int mana, int magicPower) : base(health, attack, mana)
         {
             this.magicPower = magicPower;
@@ -20,15 +23,15 @@ namespace ConsoleApp3.Characters
         }
         public override void PrintHealth()
         {
-            base.PrintHealth();
+            Console.WriteLine("Mage health: " + this.health + "\n");
         }
         public override void PrintAttack()
         {
-            base.PrintAttack();
+            Console.WriteLine("Mage attack: " + this.attack + "\n");
         }
         public override void PrintMana()
         {
-            base.PrintMana();
+            Console.WriteLine("Mage mana: " + this.mana + "\n");
         }
         public override void TakeDamage(int attack)
         {
@@ -36,8 +39,20 @@ namespace ConsoleApp3.Characters
         }
         public override void Attack(Character character)
         {
-            base.Attack(character);
+            if (ArcaneRune())
+            {
+                Console.WriteLine("Arcane rune activated!!");
+                attackBoost = (this.attack + this.mana / 100) + 10;
+                Console.WriteLine($"Character: {this.GetType()}, attacked character: {character.GetType()} for {attackBoost} damage");
+                character.TakeDamage(attackBoost);
+            }
+            else
+            {
+                Console.WriteLine($"Character: {this.GetType()}, attacked character: {character.GetType()} for {this.attack + this.magicPower} damage");
+                character.TakeDamage(this.attack + this.magicPower);
+            }
         }
+        
         private bool ArcaneRune()
         {
             Random random = new Random();

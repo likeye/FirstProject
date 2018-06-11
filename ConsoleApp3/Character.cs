@@ -58,7 +58,7 @@ namespace ConsoleApp3
         {
             return this.attack;
         }
-        
+
         public int GetHealth()
         {
             return this.health;
@@ -85,7 +85,7 @@ namespace ConsoleApp3
         }
 
         public virtual void Attack(Character character)
-        {            
+        {
             Console.WriteLine($"Character: {this.GetType()}, attacked character: {character.GetType()} for {this.attack} damage");
             character.TakeDamage(this.attack);
         }
@@ -99,5 +99,5 @@ namespace ConsoleApp3
         {
             this.health += heal;
         }
-    }    
+    }
 }
